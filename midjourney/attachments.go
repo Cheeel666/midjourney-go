@@ -78,7 +78,7 @@ func (c *Client) Attachments(ctx context.Context, attachmentsReq *AttachmentsReq
 
 	b, _ := json.Marshal(attachmentsReq)
 
-	url := fmt.Sprintf("https://discord.com/api/v9/channels/%s/attachments", attachmentsReq.ChannelID)
+	url := fmt.Sprintf("https://discord.com/api/v10/channels/%s/attachments", attachmentsReq.ChannelID)
 	req, err := http.NewRequest("POST", url, bytes.NewReader(b))
 	if err != nil {
 		return nil, fmt.Errorf("Call http.NewRequest failed, err: %w", err)
