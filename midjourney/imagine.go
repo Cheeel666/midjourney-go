@@ -22,7 +22,7 @@ func (c *Client) Imagine(ctx context.Context, imgReq *ImagineRequest) error {
 		ChannelID:     imgReq.ChannelID,
 		SessionID:     SessionID,
 		Data: map[string]any{
-			"version": "1118961510123847772",
+			"version": "1237876415471554623",
 			"id":      "938956540159881230",
 			"name":    "imagine",
 			"type":    "1",
@@ -36,7 +36,7 @@ func (c *Client) Imagine(ctx context.Context, imgReq *ImagineRequest) error {
 			"application_command": map[string]any{
 				"id":                         "938956540159881230",
 				"application_id":             ApplicationID,
-				"version":                    "1118961510123847772",
+				"version":                    "1237876415471554623",
 				"default_permission":         true,
 				"default_member_permissions": nil,
 				"type":                       1,
@@ -44,6 +44,15 @@ func (c *Client) Imagine(ctx context.Context, imgReq *ImagineRequest) error {
 				"name":                       "imagine",
 				"description":                "Create images with Midjourney",
 				"dm_permission":              true,
+				"contexts": [
+				        0,
+				        1,
+				        2
+				      ],
+				      "integration_types": [
+				        0,
+				        1
+				      ],
 				"options": []map[string]any{
 					{
 						"type":        3,
@@ -59,7 +68,7 @@ func (c *Client) Imagine(ctx context.Context, imgReq *ImagineRequest) error {
 
 	b, _ := json.Marshal(interactionsReq)
 
-	url := "https://discord.com/api/v9/interactions"
+	url := "https://discord.com/api/v10/interactions"
 	req, err := http.NewRequest("POST", url, bytes.NewReader(b))
 	if err != nil {
 		return fmt.Errorf("Call http.NewRequest failed, err: %w", err)
