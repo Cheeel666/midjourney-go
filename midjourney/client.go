@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"time"
 )
 
 type Client struct {
@@ -27,4 +28,8 @@ func checkResponse(resp *http.Response) error {
 	}
 
 	return nil
+}
+
+func generateUniqueId() string {
+	return fmt.Sprintf("%d", time.Now().UnixNano())
 }
