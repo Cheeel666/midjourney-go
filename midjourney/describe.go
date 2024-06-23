@@ -115,7 +115,7 @@ func (c *Client) Describe(ctx context.Context, describeReq *DescribeRequest) err
 
 	b, _ := json.Marshal(interactionsReq)
 
-	url_ := "https://discord.com/api/v9/interactions"
+	url_ := "https://discord.com/api/v10/interactions"
 	req, err := http.NewRequest("POST", url_, bytes.NewReader(b))
 	if err != nil {
 		return fmt.Errorf("Call http.NewRequest failed, err: %w", err)
