@@ -44,15 +44,15 @@ func (c *Client) Imagine(ctx context.Context, imgReq *ImagineRequest) error {
 				"name":                       "imagine",
 				"description":                "Create images with Midjourney",
 				"dm_permission":              true,
-				"contexts": [
-				        0,
-				        1,
-				        2
-				      ],
-				      "integration_types": [
-				        0,
-				        1
-				      ],
+				"contexts": []int{
+					0,
+					1,
+					2,
+				},
+				"integration_types": []int{
+					0,
+					1,
+				},
 				"options": []map[string]any{
 					{
 						"type":        3,
