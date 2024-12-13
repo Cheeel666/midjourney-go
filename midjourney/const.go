@@ -1,6 +1,5 @@
 package midjourney
 
 const (
-	ApplicationID string = ""
-	SessionID     string = ""
+	ApplicationID string = "936929561302675456"
 )

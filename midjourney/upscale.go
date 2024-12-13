@@ -15,6 +15,7 @@ type UpscaleRequest struct {
 	ChannelID   string `json:"channel_id"`
 	MessageID   string `json:"message_id"`
 	MessageHash string `json:"message_hash"`
+	SessionID   string `json:"session_id"`
 }
 
 func (c *Client) Upscale(ctx context.Context, upscaleReq *UpscaleRequest) error {
@@ -26,7 +27,7 @@ func (c *Client) Upscale(ctx context.Context, upscaleReq *UpscaleRequest) error 
 		ChannelID:     upscaleReq.ChannelID,
 		MessageFlags:  &flags,
 		MessageID:     &upscaleReq.MessageID,
-		SessionID:     SessionID,
+		SessionID:     upscaleReq.SessionID,
 		Data: map[string]any{
 			"component_type": 2,
 			"custom_id":      fmt.Sprintf("MJ::JOB::upsample::%d::%s", upscaleReq.Index, upscaleReq.MessageHash),

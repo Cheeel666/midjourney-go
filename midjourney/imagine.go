@@ -12,6 +12,7 @@ type ImagineRequest struct {
 	GuildID   string `json:"guild_id"`
 	ChannelID string `json:"channel_id"`
 	Prompt    string `json:"prompt"`
+	SessionID string `json:"session_id"`
 }
 
 func (c *Client) Imagine(ctx context.Context, imgReq *ImagineRequest) error {
@@ -20,7 +21,7 @@ func (c *Client) Imagine(ctx context.Context, imgReq *ImagineRequest) error {
 		ApplicationID: ApplicationID,
 		GuildID:       imgReq.GuildID,
 		ChannelID:     imgReq.ChannelID,
-		SessionID:     SessionID,
+		SessionID:     imgReq.SessionID,
 		Data: map[string]any{
 			"version": "1237876415471554623",
 			"id":      "938956540159881230",
@@ -68,7 +69,7 @@ func (c *Client) Imagine(ctx context.Context, imgReq *ImagineRequest) error {
 
 	b, _ := json.Marshal(interactionsReq)
 
-	url := "https://discord.com/api/v10/interactions"
+	url := "https://discord.com/api/v9/interactions"
 	req, err := http.NewRequest("POST", url, bytes.NewReader(b))
 	if err != nil {
 		return fmt.Errorf("Call http.NewRequest failed, err: %w", err)

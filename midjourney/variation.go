@@ -14,6 +14,7 @@ type VariationRequest struct {
 	ChannelID   string `json:"channel_id"`
 	MessageID   string `json:"message_id"`
 	MessageHash string `json:"message_hash"`
+	SessionID   string `json:"session_id"`
 }
 
 func (c *Client) Variation(ctx context.Context, variationReq *VariationRequest) error {
@@ -25,7 +26,7 @@ func (c *Client) Variation(ctx context.Context, variationReq *VariationRequest) 
 		ChannelID:     variationReq.ChannelID,
 		MessageFlags:  &flags,
 		MessageID:     &variationReq.MessageID,
-		SessionID:     SessionID,
+		SessionID:     variationReq.SessionID,
 		Data: map[string]any{
 			"component_type": 2,
 			"custom_id":      fmt.Sprintf("MJ::JOB::variation::%d::%s", variationReq.Index, variationReq.MessageHash),
@@ -34,7 +35,7 @@ func (c *Client) Variation(ctx context.Context, variationReq *VariationRequest) 
 
 	b, _ := json.Marshal(interactionsReq)
 
-	url := "https://discord.com/api/v10/interactions"
+	url := "https://discord.com/api/v9/interactions"
 	req, err := http.NewRequest("POST", url, bytes.NewReader(b))
 	if err != nil {
 		return fmt.Errorf("Call http.NewRequest failed, err: %w", err)

@@ -23,7 +23,7 @@ If you want to build your own midjourney apiserver, take a look at this [midjour
 midjourney-go is compatible with modern Go releases in module mode, with Go installed:
 
 ```bash
-go get github.com/rniedosmialek/midjourney-go@v0.0.1
+go get github.com/Cheeel666/midjourney-go@v0.0.1
 ```
 
 will resolve and add the package to the current development module, along with its dependencies.
@@ -31,7 +31,7 @@ will resolve and add the package to the current development module, along with i
 Alternatively the same can be achieved if you use import in a package:
 
 ```go
-import "github.com/rniedosmialek/midjourney-go/midjourney"
+import "github.com/Cheeel666/midjourney-go/midjourney"
 ```
 
 and run `go mod tidy` without parameters.

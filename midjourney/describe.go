@@ -16,6 +16,7 @@ type DescribeRequest struct {
 	GuildID   string `json:"guild_id"`
 	ChannelID string `json:"channel_id"`
 	ImageURL  string `json:"image_url"`
+	SessionID string `json:"session_id"`
 
 	ext      string `json:"-"`
 	filename string `json:"-"`
@@ -74,7 +75,7 @@ func (c *Client) Describe(ctx context.Context, describeReq *DescribeRequest) err
 		ApplicationID: ApplicationID,
 		GuildID:       describeReq.GuildID,
 		ChannelID:     describeReq.ChannelID,
-		SessionID:     SessionID,
+		SessionID:     describeReq.SessionID,
 		Data: map[string]any{
 			"version": "1118961510123847774",
 			"id":      "1092492867185950852",
@@ -115,7 +116,7 @@ func (c *Client) Describe(ctx context.Context, describeReq *DescribeRequest) err
 
 	b, _ := json.Marshal(interactionsReq)
 
-	url_ := "https://discord.com/api/v10/interactions"
+	url_ := "https://discord.com/api/v9/interactions"
 	req, err := http.NewRequest("POST", url_, bytes.NewReader(b))
 	if err != nil {
 		return fmt.Errorf("Call http.NewRequest failed, err: %w", err)
