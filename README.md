@@ -53,6 +53,7 @@ if err := client.Imagine(context.Background(), &midjourney.ImagineRequest{
     GuildID: "",
     ChannelID: "",
     Prompt: "",
+	SessionID:"",
 }); err != nil {
     log.Fatalf("Call client.Imagine failed, err: %+v", err)
 }
